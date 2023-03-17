@@ -12,19 +12,22 @@
     {#each day.talks as talk}
       <div class='card'>
         <h4>{talk.title}</h4>
-        <p>When? {talk.time.split('T')[1].slice(0,5)}</p>
+        <p>When? {talk.time.split('T')[1].slice(0, 5)}</p>
         <p>Who? {talk.speaker.name}</p>
         <img class='speaker-image' src='{talk.speaker.imageUrl}' alt='{talk.speaker.imageUrl}'>
       </div>
     {/each}
 
-    {#if day.talks.length}<h3>Speakers</h3>{/if}
-    {#each day.speakers as speaker}
+    {#if day.speakers.length}<h3>Speakers</h3>
       <div class='card'>
-      <p>{speaker.name}</p>
-      <img class='speaker-image' src='{speaker.imageUrl}' alt='{speaker.imageUrl}'>
+        {#each day.speakers as speaker}
+          <div class='speaker-span'>
+            <img class='speaker-image' src='{speaker.imageUrl}' alt='{speaker.imageUrl}'>
+            <div>{speaker.name}</div>
+          </div>
+        {/each}
       </div>
-    {/each}
+    {/if}
   </div>
 {/each}
 
@@ -39,6 +42,13 @@
 
     .speaker-image {
         border-radius: 10px;
-        width: 40px;
+        max-width: 60px;
+        max-height: 60px
+    }
+
+    .speaker-span {
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 0;
     }
 </style>
