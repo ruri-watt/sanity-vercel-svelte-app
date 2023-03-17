@@ -12,8 +12,8 @@
     {#each day.talks as talk}
       <div class='card'>
         <h4>{talk.title}</h4>
-        <p>{talk.time}</p>
-        <p>{talk.speaker.name}</p>
+        <p>When? {talk.time.split('T')[1].slice(0,5)}</p>
+        <p>Who? {talk.speaker.name}</p>
         <img class='speaker-image' src='{talk.speaker.imageUrl}' alt='{talk.speaker.imageUrl}'>
       </div>
     {/each}
@@ -31,7 +31,10 @@
 <style>
     .card {
         border: 1px solid black;
+        border-radius: 5px;
         margin: 10px;
+        padding: 10px;
+        background-color: #f1f3f6;
     }
 
     .speaker-image {
